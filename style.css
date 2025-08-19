@@ -15,10 +15,10 @@
 
 /* Dark Mode Variables */
 body.dark-mode {
-  --bg: #0f0f23;           /* Dark navy background */
+  --bg: #0b0b0b;           /* Near-black background */
   --text: #e5e7eb;         /* Light text for dark mode */
-  --card-bg: #1a1a2e;      /* Dark card background */
-  --shadow: 0 4px 24px rgba(0,0,0,0.3); /* Stronger shadow for dark mode */
+  --card-bg: #161616;      /* Dark gray card background */
+  --shadow: 0 4px 24px rgba(0,0,0,0.4); /* Stronger shadow for dark mode */
 }
 
 /* Dark Mode Hero Text Styling */
@@ -70,6 +70,10 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
+html, body {
+  scroll-behavior: smooth;
+}
+
 /* Container for consistent layout */
 .container {
   max-width: 1200px;
@@ -94,8 +98,8 @@ header {
 
 /* Dark mode header */
 body.dark-mode header {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.6);
 }
 
 /* Navigation flex container */
@@ -185,6 +189,14 @@ nav a:hover {
 /* Section spacing */
 .section {
   padding: 2.5rem 0 2rem 0;
+  scroll-margin-top: 80px; /* prevent sticky header overlap */
+}
+
+/* Make About fill the viewport so next section is not visible */
+#about.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 /* ========================================
@@ -206,7 +218,7 @@ nav a:hover {
 
 /* Dark mode hero */
 body.dark-mode .hero {
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  background: linear-gradient(135deg, #0b0b0b 0%, #161616 50%, #1f1f1f 100%);
 }
 
 /* Subtle texture overlay */
@@ -219,6 +231,11 @@ body.dark-mode .hero {
   bottom: 0;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') no-repeat center/cover;
   opacity: 0.3;
+}
+
+/* Reduce texture overlay in dark mode for better 3D visibility */
+body.dark-mode .hero::before {
+  opacity: 0.15;
 }
 
 /* Hero content layout */
@@ -478,6 +495,22 @@ body.dark-mode .hero {
   bottom: 0;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
   animation: shimmer 2s infinite;
+  z-index: 0;
+}
+
+/* Percentage label inside progress bar */
+.progress-bar div span {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+  letter-spacing: 0.3px;
+  pointer-events: none;
 }
 
 @keyframes shimmer {
@@ -781,7 +814,7 @@ footer {
 
 /* Dark mode footer */
 body.dark-mode footer {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
 }
 
 /* Footer texture overlay */
@@ -799,6 +832,34 @@ footer::before {
 footer .container {
   position: relative;
   z-index: 2;
+}
+
+/* Footer contact icons */
+.footer-socials {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.footer-socials a {
+  color: #ffffff;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  width: 2.8rem;
+  height: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-socials a:hover {
+  background: var(--accent);
+  color: #0b0b0b;
+  transform: translateY(-2px) scale(1.08);
 }
 
 /* ========================================
@@ -875,4 +936,19 @@ footer .container {
   .hero {
     min-height: 85vh;
   }
+  .progress-bar div span {
+    font-size: 0.8rem;
+    right: 8px;
+  }
+}
+
+/* ========================================
+   3D HERO OVERLAY CONTAINER
+   ======================================== */
+
+#hero-3d {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }
