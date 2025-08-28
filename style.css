@@ -15,10 +15,10 @@
 
 /* Dark Mode Variables */
 body.dark-mode {
-  --bg: #0f0f23;           /* Dark navy background */
+  --bg: #0b0b0b;           /* Near-black background */
   --text: #e5e7eb;         /* Light text for dark mode */
-  --card-bg: #1a1a2e;      /* Dark card background */
-  --shadow: 0 4px 24px rgba(0,0,0,0.3); /* Stronger shadow for dark mode */
+  --card-bg: #161616;      /* Dark gray card background */
+  --shadow: 0 4px 24px rgba(0,0,0,0.4); /* Stronger shadow for dark mode */
 }
 
 /* Dark Mode Hero Text Styling */
@@ -70,6 +70,10 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
+html, body {
+  scroll-behavior: smooth;
+}
+
 /* Container for consistent layout */
 .container {
   max-width: 1200px;
@@ -94,8 +98,8 @@ header {
 
 /* Dark mode header */
 body.dark-mode header {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.6);
 }
 
 /* Navigation flex container */
@@ -185,6 +189,14 @@ nav a:hover {
 /* Section spacing */
 .section {
   padding: 2.5rem 0 2rem 0;
+  scroll-margin-top: 80px; /* prevent sticky header overlap */
+}
+
+/* Make About fill the viewport so next section is not visible */
+#about.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 /* ========================================
@@ -206,7 +218,7 @@ nav a:hover {
 
 /* Dark mode hero */
 body.dark-mode .hero {
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  background: linear-gradient(135deg, #0b0b0b 0%, #161616 50%, #1f1f1f 100%);
 }
 
 /* Subtle texture overlay */
@@ -219,6 +231,11 @@ body.dark-mode .hero {
   bottom: 0;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') no-repeat center/cover;
   opacity: 0.3;
+}
+
+/* Reduce texture overlay in dark mode for better 3D visibility */
+body.dark-mode .hero::before {
+  opacity: 0.15;
 }
 
 /* Hero content layout */
@@ -307,10 +324,11 @@ body.dark-mode .hero {
 
 /* Profile picture styling */
 .profile-pic {
-  width: 420px;
-  height: 420px;
+  width: 460px;
+  height: 460px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center top;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   border: 8px solid rgba(255, 255, 255, 0.9);
   transition: all 0.4s ease;
@@ -380,6 +398,23 @@ body.dark-mode .hero {
   background: var(--primary);
   color: #fff;
   transform: translateY(-2px);
+}
+
+/* Mobile-optimized button enhancements */
+@media (max-width: 768px) {
+  .btn, .btn-outline {
+    padding: 1.2rem 2rem;
+    font-size: 1rem;
+    min-height: 48px; /* Touch-friendly minimum size */
+    min-width: 120px; /* Minimum width for touch */
+  }
+  
+  .socials a {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.3rem;
+    min-height: 44px; /* Touch-friendly minimum size */
+  }
 }
 
 /* ========================================
@@ -478,6 +513,22 @@ body.dark-mode .hero {
   bottom: 0;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
   animation: shimmer 2s infinite;
+  z-index: 0;
+}
+
+/* Percentage label inside progress bar */
+.progress-bar div span {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+  letter-spacing: 0.3px;
+  pointer-events: none;
 }
 
 @keyframes shimmer {
@@ -781,7 +832,7 @@ footer {
 
 /* Dark mode footer */
 body.dark-mode footer {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
 }
 
 /* Footer texture overlay */
@@ -799,6 +850,115 @@ footer::before {
 footer .container {
   position: relative;
   z-index: 2;
+}
+
+/* Footer contact icons */
+.footer-socials {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.footer-socials a {
+  color: #ffffff;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  width: 2.8rem;
+  height: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-socials a:hover {
+  background: var(--accent);
+  color: #0b0b0b;
+  transform: translateY(-2px) scale(1.08);
+}
+
+/* ========================================
+   MOBILE MENU STYLES
+   ======================================== */
+
+/* Mobile menu toggle button */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 200;
+}
+
+.mobile-menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+}
+
+.mobile-menu-toggle.active span:first-child {
+  transform: rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* Mobile menu overlay */
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-menu a:hover {
+  color: var(--accent);
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
 }
 
 /* ========================================
@@ -830,8 +990,9 @@ footer .container {
     justify-content: center;
   }
   .profile-pic {
-    width: 320px;
-    height: 320px;
+    width: 360px;
+    height: 360px;
+    object-position: center top;
   }
   .hero-text h1 {
     font-size: 3rem;
@@ -839,40 +1000,273 @@ footer .container {
   .hero-text p {
     font-size: 1.6rem;
   }
-  nav ul {
-    gap: 1.5rem;
+  
+  /* Show mobile menu toggle */
+  .mobile-menu-toggle {
+    display: flex;
   }
-  nav a {
-    font-size: 1rem;
+  
+  /* Hide desktop navigation */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.3s ease;
+    z-index: 150;
+  }
+  
+  .nav-menu.active {
+    right: 0;
+  }
+  
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .nav-menu a {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  /* Prevent body scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
   }
 }
 
 /* Mobile devices (600px and below) */
 @media (max-width: 600px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
   .section {
     padding: 2rem 0 1.5rem 0;
   }
+  
   .profile-pic {
-    width: 250px;
-    height: 250px;
+    width: 280px;
+    height: 280px;
+    object-position: center top;
   }
+  
   .hero-text h1 {
     font-size: 2.5rem;
+    line-height: 1.2;
   }
+  
   .hero-text p {
     font-size: 1.4rem;
   }
+  
   .about-text h2, .skills h2, .services h2, .certs h2, .projects h2, .contact-info h2 {
     font-size: 2rem;
   }
-  nav ul {
-    gap: 1rem;
-    font-size: 0.9rem;
-  }
+  
   .logo {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
+  
   .hero {
     min-height: 85vh;
   }
+  
+  .progress-bar div span {
+    font-size: 0.8rem;
+    right: 8px;
+  }
+  
+  /* Mobile-optimized buttons */
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    min-height: 48px; /* Touch-friendly minimum size */
+  }
+  
+  /* Mobile-optimized social links */
+  .socials a {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  /* Mobile-optimized cards */
+  .skill-card, .service-card, .project-card {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  /* Mobile navigation adjustments */
+  .nav-flex {
+    padding: 1rem;
+  }
+  
+  .mobile-menu-toggle {
+    width: 25px;
+    height: 20px;
+  }
+  
+  .mobile-menu-toggle span {
+    height: 2px;
+  }
+}
+
+/* Extra small mobile devices (400px and below) */
+@media (max-width: 400px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-text p {
+    font-size: 1.2rem;
+  }
+  
+  .profile-pic {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .container {
+    padding: 0 0.5rem;
+  }
+  
+  .section {
+    padding: 1.5rem 0 1rem 0;
+  }
+}
+
+/* Landscape mobile orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+    padding: 2rem 0;
+  }
+  
+  .hero-flex {
+    gap: 2rem;
+  }
+  
+  .profile-pic {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .nav-menu ul {
+    gap: 1rem;
+  }
+  
+  .nav-menu a {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch targets */
+  .btn, .socials a, .nav-menu a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Remove hover effects on touch devices */
+  .btn:hover, .socials a:hover, .nav-menu a:hover {
+    transform: none;
+  }
+  
+  /* Add active states for touch */
+  .btn:active, .socials a:active, .nav-menu a:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Mobile-specific enhancements */
+@media (max-width: 768px) {
+  /* Improve mobile scrolling */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Mobile-optimized section spacing */
+  .section {
+    scroll-margin-top: 80px; /* Account for fixed header */
+  }
+  
+  /* Mobile-optimized grid layouts */
+  .skills-grid, .services-grid, .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  /* Mobile-optimized flexbox layouts */
+  .hero-flex, .about-flex, .contact-flex {
+    gap: 2rem;
+  }
+  
+  /* Mobile-optimized text sizing */
+  .hero-text h1 {
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text p {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Mobile-optimized spacing */
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Mobile landscape optimizations */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+    padding: 1rem 0;
+  }
+  
+  .hero-flex {
+    gap: 1.5rem;
+  }
+  
+  .profile-pic {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-text p {
+    font-size: 1.3rem;
+  }
+}
+
+/* ========================================
+   3D HERO OVERLAY CONTAINER
+   ======================================== */
+
+#hero-3d {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }

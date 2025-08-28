@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Geetha Portfolio">
+  <meta name="application-name" content="Geetha Portfolio">
+  <meta name="theme-color" content="#7c3aed">
+  <meta name="msapplication-TileColor" content="#7c3aed">
+  <meta name="msapplication-navbutton-color" content="#7c3aed">
   <title>Geetha Sridevi | Portfolio</title>
   
   <!-- External CSS and Fonts -->
@@ -10,6 +18,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Mobile App Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="profile.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="profile.jpg">
+  <link rel="apple-touch-icon" sizes="180x180" href="profile.jpg">
+  <link rel="apple-touch-icon" sizes="152x152" href="profile.jpg">
+  <link rel="apple-touch-icon" sizes="144x144" href="profile.jpg">
+  <link rel="apple-touch-icon" sizes="120x120" href="profile.jpg">
+  <link rel="apple-touch-icon" sizes="114x114" href="profile.jpg">
+  <link rel="apple-touch-icon" sizes="76x76" href="profile.jpg">
+  <link rel="apple-touch-icon" sizes="72x72" href="profile.jpg">
+  <link rel="apple-touch-icon" sizes="60x60" href="profile.jpg">
+  <link rel="apple-touch-icon" sizes="57x57" href="profile.jpg">
+  
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
   <!-- ========================================
@@ -23,7 +47,7 @@
       </div>
       
       <!-- Navigation Menu -->
-      <nav>
+      <nav class="nav-menu">
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
@@ -34,6 +58,13 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       
       <!-- Dark Mode Toggle -->
       <button id="theme-toggle">
@@ -46,6 +77,7 @@
        HERO SECTION
        ======================================== -->
   <section id="home" class="section hero" data-aos="fade-up">
+    <div id="hero-3d"></div>
     <div class="container hero-flex">
       <!-- Hero Text Content -->
       <div class="hero-text">
@@ -54,10 +86,10 @@
         
         <!-- Social Media Links -->
         <div class="socials">
-          <a href="#" target="_blank" title="GitHub">
+          <a href="https://github.com/ALLAGEETHA" target="_blank" title="GitHub">
             <i class="fab fa-github"></i>
           </a>
-          <a href="#" target="_blank" title="LinkedIn">
+          <a href="https://www.linkedin.com/in/alla-geetha-sridevi-b2674b26a" target="_blank" title="LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
           <a href="#" target="_blank" title="Instagram">
@@ -76,7 +108,7 @@
       
       <!-- Profile Image -->
       <div class="hero-img">
-        <img src="profile.jpg" alt="Geetha Sridevi - Software Developer" class="profile-pic" />
+        <img src="images/profile.png" alt="Geetha Sridevi - Software Developer" class="profile-pic" />
       </div>
     </div>
   </section>
@@ -88,16 +120,31 @@
     <div class="container about-flex">
       <!-- About Image -->
       <div class="about-img">
-        <img src="profile.jpg" alt="About Geetha Sridevi" class="profile-pic" />
+        <img src="images/profile.png" alt="About Geetha Sridevi" class="profile-pic" />
       </div>
       
       <!-- About Text Content -->
       <div class="about-text">
         <h2>About Me</h2>
         <p>
-          I am a passionate and detail-oriented developer with a love for building user-centric applications. 
-          Skilled in Java, Python, React, and Node.js, I enjoy solving real-world problems and continuously 
-          learning new technologies.
+          I'm Alla Geetha Sridevi, a passionate and detail-oriented final-year Computer Science student at Malla Reddy University. I specialize in full-stack development and AI/ML, with hands-on experience building real-world applications that solve real problems.
+
+I’ve worked on:
+
+<p>🤖 AI Projects like OncoTrack (blood cancer detection using CNNs) and PhytoInformatics (medicinal plant recognition using MobileNetV2, VGG19)</p>
+
+<p>💬 A smart Rasa-based chatbot for Shop Talk, integrated with a React.js frontend and MySQL backend</p>
+
+<p>🌾 Crop Yield Prediction, deployed as both a web app and an Android application</p>
+
+<p>🔧 Tech Stack: JavaScript, Python, Java, React.js, Node.js, Flask, MySQL, Git, TensorFlow</p>
+
+<p>🎓 Certifications: Web Development (Internshala), Data Analytics with Python (NPTEL), Java Programming (NPTEL)</p>
+
+<p>I'm actively seeking software development roles or internships where I can contribute, learn, and grow.</p>
+
+<p>📫 Let’s connect and build something great together:</p>
+
         </p>
         <a href="#more-about" class="btn btn-outline">Read More</a>
       </div>
@@ -115,42 +162,112 @@
         <div class="skill-card">
           <span>Java</span>
           <div class="progress-bar">
-            <div style="width: 90%"></div>
+            <div style="width: 90%"><span>90%</span></div>
           </div>
         </div>
         
         <div class="skill-card">
           <span>Python</span>
           <div class="progress-bar">
-            <div style="width: 85%"></div>
+            <div style="width: 85%"><span>85%</span></div>
+          </div>
+        </div>
+
+        
+        <div class="skill-card">
+          <span>SQL</span>
+          <div class="progress-bar">
+            <div style="width: 85%"><span>85%</span></div>
+          </div>
+        </div>
+
+         
+        <div class="skill-card">
+          <span>HTML & CSS
+          </span>
+          <div class="progress-bar">
+            <div style="width: 95%"><span>95%</span></div>
           </div>
         </div>
         
         <div class="skill-card">
           <span>JavaScript</span>
           <div class="progress-bar">
-            <div style="width: 80%"></div>
+            <div style="width: 93%"><span>93%</span></div>
           </div>
         </div>
         
         <div class="skill-card">
           <span>React</span>
           <div class="progress-bar">
-            <div style="width: 75%"></div>
+            <div style="width: 95%"><span>95%</span></div>
           </div>
         </div>
         
         <div class="skill-card">
           <span>Node.js</span>
           <div class="progress-bar">
-            <div style="width: 70%"></div>
+            <div style="width: 90%"><span>90%</span></div>
           </div>
         </div>
-        
+
         <div class="skill-card">
-          <span>SQL</span>
+          <span>Express.js</span>
           <div class="progress-bar">
-            <div style="width: 85%"></div>
+            <div style="width: 90%"><span>90%</span></div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <span>Next.js</span>
+          <div class="progress-bar">
+            <div style="width: 80%"><span>80%</span></div>
+          </div>
+        </div>
+       
+        <div class="skill-card">
+          <span>Data Structures and Algorithms</span>
+          <div class="progress-bar">
+            <div style="width: 75%"><span>75%</div>
+          </div>
+        </div>
+
+
+         
+        <div class="skill-card">
+          <span>Problem Solving
+          </span>
+          <div class="progress-bar">
+            <div style="width: 95%"><span>95%</span></div>
+          </div>
+        </div>
+
+
+         
+        <div class="skill-card">
+          <span>Communication
+          </span>
+          <div class="progress-bar">
+            <div style="width: 90%"><span>90%</span></div>
+          </div>
+        </div>
+
+
+         
+        <div class="skill-card">
+          <span>Teamwork
+          </span>
+          <div class="progress-bar">
+            <div style="width: 95%"><span>95%</span></div>
+          </div>
+        </div>
+
+         
+        <div class="skill-card">
+          <span>Leadership
+          </span>
+          <div class="progress-bar">
+            <div style="width: 100%"><span>100%</span></div>
           </div>
         </div>
       </div>
@@ -202,23 +319,25 @@
     <div class="container">
       <h2>Certifications</h2>
       <div class="certs-grid">
-        <!-- Certification Cards -->
+        <!-- Data Analytics with Python -->
         <div class="cert-card">
-          <h3>Python Programming</h3>
-          <p>Coursera, 2024</p>
-          <a href="cert1.pdf" target="_blank" class="btn btn-outline">View Certificate</a>
+          <h3>Data Analytics with Python</h3>
+          <p>NPTEL, 2024</p>
+          <a href="images/Data Analytics with Python.png" target="_blank" class="btn btn-outline">View Certificate</a>
         </div>
         
+        <!-- Programming In Java -->
+        <div class="cert-card">
+          <h3>Programming In Java</h3>
+          <p>NPTEL, 2024</p>
+          <a href="images/Programming In Java.jpg" target="_blank" class="btn btn-outline">View Certificate</a>
+        </div>
+        
+        <!-- Web Development -->
         <div class="cert-card">
           <h3>Web Development</h3>
           <p>Internshala, 2025</p>
-          <a href="cert2.pdf" target="_blank" class="btn btn-outline">View Certificate</a>
-        </div>
-        
-        <div class="cert-card">
-          <h3>Programming in Java</h3>
-          <p>NPTEL, 2023</p>
-          <a href="cert3.pdf" target="_blank" class="btn btn-outline">View Certificate</a>
+          <a href="images/Web development .png" target="_blank" class="btn btn-outline">View Certificate</a>
         </div>
       </div>
     </div>
@@ -238,7 +357,7 @@
             <h3>Chatbot using React & Rasa</h3>
             <p>Intelligent chatbot with React frontend and Rasa backend, featuring conversational AI and API integration.</p>
             <div class="project-links">
-              <a href="https://github.com/geethasridevi/chatbot-react-rasa" target="_blank" title="GitHub Repository">
+              <a href="https://github.com/ALLAGEETHA/AI-CHATBOT.git" target="_blank" title="GitHub Repository">
                 <i class="fab fa-github"></i>
               </a>
               <a href="https://chatbot-demo.vercel.app" target="_blank" title="Live Demo">
@@ -248,68 +367,36 @@
           </div>
         </div>
         
-        <!-- Project 2: Leaf Recognition -->
+        
+        <!-- Project 2: Web App -->
         <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=400&h=200&fit=crop" alt="Medicinal Leaf Recognition (CNN)">
+          <img src="images/sports.jpeg" alt="Full-Stack Flask Web App">
           <div class="project-info">
-            <h3>Medicinal Leaf Recognition (CNN)</h3>
-            <p>CNN model for accurate recognition of medicinal plant leaves, aiding botanical research.</p>
+            <h3>Sports Buddy Web App</h3>
+            <p>Full-stack web app using HTML, CSS, JavaScript, and Bootstrap , Connect with sports enthusiasts, join events, and make new friends!.</p>
             <div class="project-links">
-              <a href="https://github.com/geethasridevi/leaf-recognition-cnn" target="_blank" title="GitHub Repository">
+              <a href="https://github.com/ALLAGEETHA/sports-buddy.git" target="_blank" title="GitHub Repository">
                 <i class="fab fa-github"></i>
               </a>
-              <a href="https://leaf-recognition-demo.herokuapp.com" target="_blank" title="Live Demo">
+              <a href=" https://allageetha.github.io/sports-buddy/" target="_blank" title="Live Demo">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
           </div>
         </div>
         
-        <!-- Project 3: Flask Web App -->
-        <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop" alt="Full-Stack Flask Web App">
-          <div class="project-info">
-            <h3>Full-Stack Flask Web App</h3>
-            <p>Full-stack web app using Flask, with database integration and user authentication.</p>
-            <div class="project-links">
-              <a href="https://github.com/geethasridevi/flask-webapp" target="_blank" title="GitHub Repository">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://flask-webapp-demo.vercel.app" target="_blank" title="Live Demo">
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-          </div>
-        </div>
         
-        <!-- Project 4: Cancer Diagnostics -->
+        <!-- Project 3: Booking platform -->
         <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=200&fit=crop" alt="Cancer Diagnostics Tool (CNN)">
+          <img src="images/artist.png" alt="Crop Yield Prediction">
           <div class="project-info">
-            <h3>Cancer Diagnostics Tool (CNN)</h3>
-            <p>CNN-based tool for early cancer diagnosis from medical images, assisting professionals.</p>
+            <h3>Artist Booking Platform </h3>
+            <p>A demo platform for booking artists, built with Next.js 13 App Router, Tailwind CSS, and React Hook Form.</p>
             <div class="project-links">
-              <a href="https://github.com/geethasridevi/cancer-diagnostics-cnn" target="_blank" title="GitHub Repository">
+              <a href="https://github.com/ALLAGEETHA/eventful-india.git" target="_blank" title="GitHub Repository">
                 <i class="fab fa-github"></i>
               </a>
-              <a href="https://cancer-diagnostics-demo.streamlit.app" target="_blank" title="Live Demo">
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Project 5: Crop Prediction -->
-        <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=200&fit=crop" alt="Crop Yield Prediction">
-          <div class="project-info">
-            <h3>Crop Yield Prediction</h3>
-            <p>Machine learning model to predict crop yields based on environmental and soil data.</p>
-            <div class="project-links">
-              <a href="https://github.com/geethasridevi/crop-yield-prediction" target="_blank" title="GitHub Repository">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://crop-prediction-demo.herokuapp.com" target="_blank" title="Live Demo">
+              <a href="https://allageetha.github.io/eventful-india/" target="_blank" title="Live Demo">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -329,15 +416,7 @@
         <h2>Contact Me</h2>
         <p>Feel free to reach out for collaborations or just a friendly hello!</p>
         
-        <!-- Contact Social Links -->
-        <div class="contact-socials">
-          <a href="mailto:alla.geetha.sridevi@gmail.com" title="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
-          <a href="tel:+918919236027" title="Phone">
-            <i class="fas fa-phone"></i>
-          </a>
-        </div>
+        <!-- Contact details moved to footer -->
       </div>
       
       <!-- Contact Form -->
@@ -356,6 +435,14 @@
   <footer>
     <div class="container">
       <p>&copy; 2025 Geetha Sridevi. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="mailto:alla.geetha.sridevi@gmail.com" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="tel:+918919236027" title="Phone">
+          <i class="fas fa-phone"></i>
+        </a>
+      </div>
     </div>
   </footer>
 
@@ -366,19 +453,251 @@
   <!-- AOS Animation Library -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   
+  <!-- Three.js for 3D transparent background -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  
   <!-- Custom JavaScript -->
   <script>
     // Initialize AOS animations
     AOS.init();
+    // Default to dark mode (black/grey palette)
+    document.body.classList.add('dark-mode');
     
     // Dark mode toggle functionality
     const themeBtn = document.getElementById('theme-toggle');
+    if (document.body.classList.contains('dark-mode')) {
+      themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+    }
     themeBtn.onclick = () => {
       document.body.classList.toggle('dark-mode');
       themeBtn.innerHTML = document.body.classList.contains('dark-mode')
         ? '<i class="fas fa-sun"></i>'
         : '<i class="fas fa-moon"></i>';
     };
+
+    // Subtle particle constellation overlay for hero
+    (function initHero3D(){
+      const container = document.getElementById('hero-3d');
+      if (!container || !window.THREE) return;
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+      camera.position.z = 8;
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      container.appendChild(renderer.domElement);
+
+      const isMobile = Math.min(window.innerWidth, window.innerHeight) < 700;
+      const particleCount = isMobile ? 70 : 140;
+      const worldSize = 10;
+      const half = worldSize / 2;
+      const positions = new Float32Array(particleCount * 3);
+      const velocities = new Float32Array(particleCount * 3);
+      for (let i = 0; i < particleCount; i++) {
+        const ix = i * 3;
+        positions[ix] = (Math.random() - 0.5) * worldSize;
+        positions[ix + 1] = (Math.random() - 0.5) * worldSize * 0.6;
+        positions[ix + 2] = (Math.random() - 0.5) * worldSize;
+        velocities[ix] = (Math.random() - 0.5) * 0.02;
+        velocities[ix + 1] = (Math.random() - 0.5) * 0.02;
+        velocities[ix + 2] = (Math.random() - 0.5) * 0.02;
+      }
+
+      const pointsGeometry = new THREE.BufferGeometry();
+      pointsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const pointsMaterial = new THREE.PointsMaterial({ color: 0x9aa0a6, size: isMobile ? 0.03 : 0.04, transparent: true, opacity: 0.9 });
+      const points = new THREE.Points(pointsGeometry, pointsMaterial);
+      scene.add(points);
+
+      let lineGeometry = new THREE.BufferGeometry();
+      const lineMaterial = new THREE.LineBasicMaterial({ color: 0x8a8f98, transparent: true, opacity: 0.18 });
+      let lineSegments = new THREE.LineSegments(lineGeometry, lineMaterial);
+      scene.add(lineSegments);
+
+      let mouseX = 0, mouseY = 0;
+      const onResize = () => {
+        const w = container.clientWidth || container.offsetWidth || container.parentElement.clientWidth;
+        const h = container.clientHeight || container.offsetHeight || container.parentElement.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      };
+      const onMouseMove = (e) => {
+        const rect = container.getBoundingClientRect();
+        mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 0.5; // -0.5..0.5
+        mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 0.3;
+      };
+      window.addEventListener('resize', onResize);
+      window.addEventListener('mousemove', onMouseMove);
+      onResize();
+
+      function updateParticles() {
+        const pos = pointsGeometry.attributes.position.array;
+        for (let i = 0; i < particleCount; i++) {
+          const ix = i * 3;
+          pos[ix] += velocities[ix];
+          pos[ix + 1] += velocities[ix + 1];
+          pos[ix + 2] += velocities[ix + 2];
+          if (pos[ix] < -half || pos[ix] > half) velocities[ix] *= -1;
+          if (pos[ix + 1] < -half * 0.6 || pos[ix + 1] > half * 0.6) velocities[ix + 1] *= -1;
+          if (pos[ix + 2] < -half || pos[ix + 2] > half) velocities[ix + 2] *= -1;
+        }
+        pointsGeometry.attributes.position.needsUpdate = true;
+      }
+
+      function updateLines() {
+        const threshold = isMobile ? 1.2 : 1.6;
+        const maxConnectionsPer = 4;
+        const pos = pointsGeometry.attributes.position.array;
+        const segments = [];
+        const connections = new Uint8Array(particleCount);
+        for (let i = 0; i < particleCount; i++) {
+          const ix = i * 3;
+          const ax = pos[ix], ay = pos[ix + 1], az = pos[ix + 2];
+          for (let j = i + 1; j < particleCount; j++) {
+            if (connections[i] >= maxConnectionsPer && connections[j] >= maxConnectionsPer) continue;
+            const jx = j * 3;
+            const bx = pos[jx], by = pos[jx + 1], bz = pos[jx + 2];
+            const dx = ax - bx, dy = ay - by, dz = az - bz;
+            const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+            if (dist < threshold) {
+              segments.push(ax, ay, az, bx, by, bz);
+              connections[i]++;
+              connections[j]++;
+            }
+          }
+        }
+        const arr = new Float32Array(segments);
+        lineGeometry.dispose();
+        lineGeometry = new THREE.BufferGeometry();
+        lineGeometry.setAttribute('position', new THREE.BufferAttribute(arr, 3));
+        lineSegments.geometry = lineGeometry;
+      }
+
+      function animate(){
+        requestAnimationFrame(animate);
+        updateParticles();
+        updateLines();
+        scene.rotation.y += (mouseX - scene.rotation.y) * 0.02;
+        scene.rotation.x += (-mouseY - scene.rotation.x) * 0.02;
+        renderer.render(scene, camera);
+      }
+      animate();
+    })();
+  </script>
+  
+  <!-- Mobile Menu JavaScript -->
+  <script>
+    // Mobile menu functionality
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const body = document.body;
+    
+    // Toggle mobile menu
+    mobileMenuToggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      body.classList.toggle('menu-open');
+    });
+    
+    // Close menu when clicking on a link
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        body.classList.remove('menu-open');
+      });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+        mobileMenuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        body.classList.remove('menu-open');
+      }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        mobileMenuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        body.classList.remove('menu-open');
+      }
+    });
+    
+    // Touch-friendly interactions for mobile
+    let touchStartY = 0;
+    let touchEndY = 0;
+    
+    document.addEventListener('touchstart', (e) => {
+      touchStartY = e.changedTouches[0].screenY;
+    });
+    
+    document.addEventListener('touchend', (e) => {
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipe();
+    });
+    
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartY - touchEndY;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swipe up - could be used for navigation
+          console.log('Swipe up detected');
+        } else {
+          // Swipe down - could be used for navigation
+          console.log('Swipe down detected');
+        }
+      }
+    }
+    
+    // Add mobile-specific smooth scrolling
+    if ('ontouchstart' in window) {
+      document.documentElement.style.scrollBehavior = 'smooth';
+    }
+    
+    // Service Worker Registration for PWA-like experience
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('SW registered: ', registration);
+          })
+          .catch((registrationError) => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+    
+    // Add mobile-specific enhancements
+    if ('ontouchstart' in window) {
+      // Add touch feedback for interactive elements
+      const touchElements = document.querySelectorAll('.btn, .socials a, .nav-menu a');
+      touchElements.forEach(element => {
+        element.addEventListener('touchstart', function() {
+          this.style.transform = 'scale(0.95)';
+        });
+        
+        element.addEventListener('touchend', function() {
+          this.style.transform = '';
+        });
+      });
+      
+      // Prevent zoom on double tap
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', function (event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+          event.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, false);
+    }
   </script>
 </body>
 </html>
